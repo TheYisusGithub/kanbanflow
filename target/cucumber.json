@@ -1,0 +1,193 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2019-09-08T16:57:46.055Z",
+        "line": 3,
+        "name": "The user adds new task",
+        "description": "",
+        "id": "creation-funtional-and-acceptance;the-user-adds-new-task",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 15227284302,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The user go to the page kanbanflow to login",
+            "match": {
+              "location": "KanbanStep.theUserGoToThePageKanbanflowToLogin()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 324735119,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The user adds to-do task",
+            "match": {
+              "location": "KanbanStep.theUserAddsToDoTask()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 18104,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The task was create",
+            "match": {
+              "location": "KanbanStep.theTaskWasCreate()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Acceptance"
+          }
+        ]
+      }
+    ],
+    "name": "Creation funtional and acceptance",
+    "description": "",
+    "id": "creation-funtional-and-acceptance",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/AddTask.feature",
+    "tags": []
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2019-09-08T16:58:01.611Z",
+        "line": 4,
+        "name": "The user add new member",
+        "description": "",
+        "id": "creation-funtional-and-acceptance;the-user-add-new-member",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : }\n  (Session info: chrome\u003d76.0.3809.132): \nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027pepillo-Inspiron-5577\u0027, ip: \u0027127.0.1.1\u0027, os.name: \u0027Linux\u0027, os.arch: \u0027amd64\u0027, os.version: \u00275.0.0-25-generic\u0027, java.version: \u00271.8.0_222\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 76.0.3809.132, chrome: {chromedriverVersion: 76.0.3809.68 (420c9498db8ce..., userDataDir: /tmp/.com.google.Chrome.N4tiLF}, goog:chromeOptions: {debuggerAddress: localhost:43101}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}\nSession ID: e75728e23d094d90486dc0fc6da9def6\n*** Element info: {Using\u003dcss selector, value\u003d[href\u003d\u0027/login\u0027]}\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:420)\n\tat org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy23.click(Unknown Source)\n\tat kanbanflow.ui.pages.PageTransporter.goToLoginPage(PageTransporter.java:16)\n\tat steps.KanbanStep.theUserGoToThePageKanbanflowToLogin(KanbanStep.java:36)\n\tat ✽.The user go to the page kanbanflow to login(file:src/test/resources/features/InviteMember.feature:5)\n",
+              "duration": 64510253,
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "The user go to the page kanbanflow to login",
+            "match": {
+              "location": "KanbanStep.theUserGoToThePageKanbanflowToLogin()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 9047,
+              "status": "skipped"
+            },
+            "line": 6,
+            "name": "The user add new member",
+            "match": {
+              "location": "KanbanStep.theUserAddNewMember()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3589,
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "The access is successfuly",
+            "match": {
+              "location": "KanbanStep.theAccessIsSuccessfuly()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Acceptance"
+          }
+        ]
+      }
+    ],
+    "name": "Creation funtional and acceptance",
+    "description": "",
+    "id": "creation-funtional-and-acceptance",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/InviteMember.feature",
+    "tags": []
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2019-09-08T16:58:01.677Z",
+        "line": 4,
+        "name": "The user login to kanbanflow",
+        "description": "",
+        "id": "creation-funtional-and-acceptance;the-user-login-to-kanbanflow",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : }\n  (Session info: chrome\u003d76.0.3809.132): \nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027pepillo-Inspiron-5577\u0027, ip: \u0027127.0.1.1\u0027, os.name: \u0027Linux\u0027, os.arch: \u0027amd64\u0027, os.version: \u00275.0.0-25-generic\u0027, java.version: \u00271.8.0_222\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 76.0.3809.132, chrome: {chromedriverVersion: 76.0.3809.68 (420c9498db8ce..., userDataDir: /tmp/.com.google.Chrome.N4tiLF}, goog:chromeOptions: {debuggerAddress: localhost:43101}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}\nSession ID: e75728e23d094d90486dc0fc6da9def6\n*** Element info: {Using\u003dcss selector, value\u003d[href\u003d\u0027/login\u0027]}\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:420)\n\tat org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy23.click(Unknown Source)\n\tat kanbanflow.ui.pages.PageTransporter.goToLoginPage(PageTransporter.java:16)\n\tat steps.KanbanStep.theUserGoToThePageKanbanflow(KanbanStep.java:25)\n\tat ✽.The user go to the page kanbanflow(file:src/test/resources/features/Login.feature:5)\n",
+              "duration": 50165854,
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "The user go to the page kanbanflow",
+            "match": {
+              "location": "KanbanStep.theUserGoToThePageKanbanflow()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3745,
+              "status": "skipped"
+            },
+            "line": 6,
+            "name": "The user login to kanbanflow",
+            "match": {
+              "location": "KanbanStep.theUserLoginToKanbanflow()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2807,
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "The access is successfuly",
+            "match": {
+              "location": "KanbanStep.theAccessIsSuccessfuly()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Acceptance"
+          }
+        ]
+      }
+    ],
+    "name": "Creation funtional and acceptance",
+    "description": "",
+    "id": "creation-funtional-and-acceptance",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/Login.feature",
+    "tags": []
+  }
+]
