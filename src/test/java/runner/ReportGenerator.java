@@ -35,7 +35,7 @@ public class ReportGenerator {
         final File reportOutputDirectory = new File("target");
         final List<String> jsonFiles = new ArrayList<>();
         jsonFiles.add("target/cucumber.json");
-        final String projectName = "Salesforce";
+        final String projectName = "kanbanflow";
         final boolean runWithJenkins = false;
         final Configuration configuration = new Configuration(reportOutputDirectory, projectName);
         configuration.addClassifications("Branch", "RELEASE/1.0");

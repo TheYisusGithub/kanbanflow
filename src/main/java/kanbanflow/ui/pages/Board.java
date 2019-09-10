@@ -33,7 +33,6 @@ public class Board extends BasePage {
     private WebElement modal;
 
 
-
     /**
      * Method to let a send a description to the task.
      *
@@ -65,6 +64,7 @@ public class Board extends BasePage {
 
     /**
      * Method to let set a email method.
+     *
      * @param email the user to invite.
      */
     public void setAddMember(String email) {
@@ -76,26 +76,48 @@ public class Board extends BasePage {
     /**
      * Method to let add new user.
      */
-    public void addNewInviteUser(){
+    public void addNewInviteUser() {
         addMember.click();
     }
 
     /**
      * Method to let write invite user.
+     *
      * @param email from user.
      */
-    public void writeEmailInvitations(String email){
+    public void writeEmailInvitations(String email) {
         addEmail.sendKeys(email);
     }
 
     /**
      * Verify when send a invitations if the user exists.
+     *
      * @param email the user.
      * @return compare if member exist.
      */
-    public boolean verifyIfExist(String email){
+    public boolean verifyIfExist(String email) {
         sendInvite.click();
-        System.out.println(email+" is already a member of the board");
-        return (email+" is already a member of the board").equals(catchMessage.getText());
+        System.out.println(email + " is already a member of the board");
+        return (email + " is already a member of the board").equals(catchMessage.getText());
+    }
+
+    @FindBy(xpath = "//button[contains(@title, 'All members')]")
+    private WebElement allMember;
+
+    @FindBy(xpath = "//input[contains(@class, 'boardMembersDialog-searchInput')]")
+    private WebElement searchMemberInvite;
+
+    @FindBy(xpath = "//div[contains(@class, 'boardMembersDialog-memberName truncate')]")
+    private WebElement MemberFound;
+
+    @FindBy(xpath = "//div[contains(@class, 'profileDialog-isPendingMember')]")
+    private WebElement pendingInvitation;
+    public void findUserInvitation(String email){
+        allMember.click();
+//        searchMemberInvite.sendKeys(email);
+//        MemberFound.click();
+    }
+    public boolean isPendingInvitations(){
+        return pendingInvitation.getText().equals("Pending invitation");
     }
 }
