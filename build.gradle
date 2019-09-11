@@ -8,6 +8,24 @@ plugins {
     id 'checkstyle'
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+//task cucumber() {
+//    dependsOn assemble, compileTestJava
+//    doLast {
+//        javaexec {
+//            main = "cucumber.api.cli.Main"
+//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+//            args = ['--plugin', 'pretty', '--glue', 'steps', 'src/test/resources']
+//        }
+//    }
+//}
+
+
 repositories {
     mavenLocal()
     maven {
@@ -20,11 +38,12 @@ checkstyle {
 }
 
 dependencies {
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
 //    testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.seleniumhq.selenium:selenium-java:3.141.59'
     compile("io.github.bonigarcia:webdrivermanager:3.6.2")
     testCompile 'io.cucumber:cucumber-java:4.7.1'
-    compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.2'
+    compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.1'
     testCompile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.9.0'
     testCompile group: 'org.testng', name: 'testng', version: '7.0.0'
 }
@@ -43,5 +62,5 @@ publishing {
 
 test {
     useTestNG()
-    scanForTestClasses = false
+//    scanForTestClasses = false
 }
