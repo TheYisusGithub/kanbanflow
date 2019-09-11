@@ -43,31 +43,34 @@ import java.io.File;
 public class Runner extends AbstractTestNGCucumberTests {
 
     @AfterMethod //AfterMethod annotation - This method executes after every test execution
-    public void screenShot(ITestResult result) {
+    public void screenShot(ITestResult result){
         //using ITestResult.FAILURE is equals to result.getStatus then it enter into if condition
-        WebDriver driver = WebDriverManager.getInstance().getDriver();
-        if (ITestResult.FAILURE == result.getStatus()) {
-            try {
+
+        WebDriver driver=WebDriverManager.getInstance().getDriver();
+        if(ITestResult.FAILURE==result.getStatus()){
+            try{
                 // To create reference of TakesScreenshot
-                TakesScreenshot screenshot = (TakesScreenshot) driver;
+                TakesScreenshot screenshot=(TakesScreenshot)driver;
                 // Call method to capture screenshot
-                File src = screenshot.getScreenshotAs(OutputType.FILE);
+                File src=screenshot.getScreenshotAs(OutputType.FILE);
                 // Copy files to specific location
                 // result.getName() will return name of test case so that screenshot name will be same as test case name
-                FileUtils.copyFile(src, new File(System.getProperty("user.dir")  + result.getName() + ".png"));
+                FileUtils.copyFile(src, new File("D:\\"+result.getName()+".png"));
                 System.out.println("Successfully captured a screenshot");
-            } catch (Exception e) {
-                System.out.println("Exception while taking screenshot " + e.getMessage());
+            }catch (Exception e){
+                System.out.println("Exception while taking screenshot "+e.getMessage());
             }
         }
-        driver.close();
+        driver.quit();
     }
+
 
     /**
      * The method afterExecution executes the project and generate it report.
      */
     @AfterTest
     public void afterExecution() {
+//        WebDriverManager.getInstance().getDriver().close();
         ReportGenerator.generateReport();
     }
 }
