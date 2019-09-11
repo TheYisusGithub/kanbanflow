@@ -13,6 +13,8 @@
 package kanbanflow.ui.pages;
 
 import kanbanflow.ui.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -31,7 +33,8 @@ public class Board extends BasePage {
     private WebElement sendSave;
     @FindBy(className = "addTaskDialog-wrapper")
     private WebElement modal;
-
+    @FindBy(className = "addTaskDialog-close")
+    private WebElement closeModalButton;
 
     /**
      * Method to let a send a description to the task.
@@ -41,7 +44,8 @@ public class Board extends BasePage {
     public void setAddNewToDo(String description) {
         addTaskButton.click();
         addTaskName.sendKeys(description);
-        sendSave.click();
+        driver.findElement(By.xpath("//body")).sendKeys(Keys.chord(Keys.CONTROL, Keys.RETURN));
+
     }
 
     /**
@@ -112,12 +116,97 @@ public class Board extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class, 'profileDialog-isPendingMember')]")
     private WebElement pendingInvitation;
-    public void findUserInvitation(String email){
+
+    /**
+     * Method find member user.
+     *
+     * @param email member to find.
+     */
+    public void findUserInvitation(String email) {
         allMember.click();
-//        searchMemberInvite.sendKeys(email);
-//        MemberFound.click();
+        searchMemberInvite.sendKeys(email);
+        MemberFound.click();
     }
-    public boolean isPendingInvitations(){
+
+    /**
+     * Method return the compare pending invitations.
+     *
+     * @return tru or false acoordig if member are invitation.
+     */
+    public boolean isPendingInvitations() {
         return pendingInvitation.getText().equals("Pending invitation");
+
+    }
+
+    /**
+     * Method remove invitations.
+     */
+    @FindBy(xpath = "//button[contains(@class, 'profileDialog-removeFromBoard profileDialog-action button')]")
+    private WebElement memberDelete;
+    @FindBy(xpath = "//button[contains(@class, 'modalBox-button button button--danger')]")
+    private WebElement buttonMemberDelete;
+
+    public void removeInvitationMember() {
+        memberDelete.click();
+        buttonMemberDelete.click();
+    }
+
+    /**
+     * Method goOutPage.
+     */
+    @FindBy(xpath = "//img[contains(@id, 'menuLinks-avatar')]")
+    private WebElement settingMenu;
+    @FindBy(xpath = "//a[contains(@class, 'menuLinks-logout userMenu-item userMenu-link')]")
+    private WebElement logOutButton;
+
+    public void goOutPage() {
+        settingMenu.click();
+        logOutButton.click();
+    }
+
+    /**
+     * Method close modal windows.
+     */
+    @FindBy(xpath = "//button[contains(@class, 'addTaskDialog-close')]")
+    private WebElement taskModalCloseButton;
+
+    public void modalTaskClose() {
+        taskModalCloseButton.click();
+    }
+
+    /**
+     * Method compare is task are in the boar.
+     */
+    @FindBy(xpath = "//span[contains(@class,'task-name')]")
+    private WebElement isInBoard;
+
+    public boolean isTaskInBoard(String Description) {
+        return isInBoard.getText().equals(Description);
+    }
+
+    /**
+     * Method delete task that was create.
+     */
+    @FindBy(xpath = "//div[contains(@class,'task task-yellow')]")
+    private WebElement taskInBoard;
+    @FindBy(xpath = "//button[contains(@class,'taskDetails-sidebar-deleteButton taskDetails-sidebarButton')]")
+    private WebElement trashTask;
+    @FindBy(xpath = "//button[contains(@class,'modalBox-button button button--danger')]")
+    private WebElement buttonOkTrash;
+
+    public void Deletetask() {
+        taskInBoard.click();
+        trashTask.click();
+        buttonOkTrash.click();
+    }
+
+    /**
+     * Method compare if member is already.
+     */
+    @FindBy(xpath = "//div[contains(@class, 'modalBox-body scroll scroll--rounded')]")
+    private WebElement messageIfexist;
+
+    public boolean isAlreadyMemberExist() {
+        return messageIfexist.getText().equals(" is already a member of the board");
     }
 }

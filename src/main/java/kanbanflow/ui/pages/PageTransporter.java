@@ -28,7 +28,7 @@ public class PageTransporter extends BasePage {
     private WebElement loginButton;
 
     /**
-     *Constructor to let set a driver.
+     * Constructor to let set a driver.
      */
     public PageTransporter() {
         System.out.println(ReadProperties.getInstance().getUrl());
@@ -37,6 +37,7 @@ public class PageTransporter extends BasePage {
 
     /**
      * Method to let do the step to login.
+     *
      * @return object type LoginPage.
      */
     public LoginPage goToLoginPage() {

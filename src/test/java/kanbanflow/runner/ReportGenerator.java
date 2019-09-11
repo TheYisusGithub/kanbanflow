@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package runner;
+package kanbanflow.runner;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
