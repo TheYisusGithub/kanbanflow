@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class WebDriverManager {
+public final class WebDriverManager {
     private static int timeOutInSeconds = 0;
     private static WebDriverManager ourInstance = new WebDriverManager();
     private WebDriver driver;
@@ -33,6 +33,7 @@ public class WebDriverManager {
 
     /**
      * Method return the instance.
+     *
      * @return instance type of WebDriverManager.
      */
     public static WebDriverManager getInstance() {
@@ -50,11 +51,13 @@ public class WebDriverManager {
         driver = BrowserFactory.getBrowser(browserType).getDriver();
         timeOutInSeconds = Integer.parseInt(WebDriverConfig.getInstance().getExplicit());
         wait = new WebDriverWait(driver, timeOutInSeconds);
-        driver.manage().timeouts().implicitlyWait(Integer.parseInt(WebDriverConfig.getInstance().getImplicit()), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(WebDriverConfig.
+                getInstance().getImplicit()), TimeUnit.SECONDS);
     }
 
     /**
      * Method to let get the driver.
+     *
      * @return driver.
      */
     public WebDriver getDriver() {
@@ -63,6 +66,7 @@ public class WebDriverManager {
 
     /**
      * Method to let get a wait.
+     *
      * @return wait.
      */
     public WebDriverWait getWait() {

@@ -52,6 +52,7 @@ public class BoardHooks {
     @After("@DeleteTask")
     public void Deletetask() {
         context.getBoardEntities().getBoard().Deletetask();
+
     }
 
     /**
@@ -64,5 +65,12 @@ public class BoardHooks {
             final byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot, "image/png"); // ... and embed it in the report.
         }
+    }
+    /**
+     * Method to let logout.
+     */
+    @After("@logout")
+    public void logout() {
+        context.getBoardEntities().getBoard().goOutPage();
     }
 }

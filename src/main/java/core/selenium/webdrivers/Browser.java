@@ -23,6 +23,7 @@ import org.openqa.selenium.WebDriver;
 public interface Browser {
     /**
      * Method indicates the behavior that the other classes will have.
+     * @return driver form browser.
      */
-    public WebDriver getDriver();
+    WebDriver getDriver();
 }
