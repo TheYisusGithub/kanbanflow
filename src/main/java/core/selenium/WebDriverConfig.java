@@ -15,7 +15,6 @@ package core.selenium;
 import core.util.Log;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -25,12 +24,16 @@ import java.util.Properties;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class WebDriverConfig {
+public final class WebDriverConfig {
     private String webBrowser;
     private String implicit;
     private String explicit;
     private static WebDriverConfig ourInstance = new WebDriverConfig();
 
+    /**
+     * Method let optain a instance.
+     * @return WebDriverConfig instance.
+     */
     public static WebDriverConfig getInstance() {
         return ourInstance;
     }
