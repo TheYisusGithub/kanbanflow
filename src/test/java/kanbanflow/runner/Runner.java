@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.io.File;
 
@@ -59,7 +60,8 @@ public class Runner extends AbstractTestNGCucumberTests {
                 System.out.println("Exception while taking screenshot " + e.getMessage());
             }
         }
-        driver.quit();
+//        driver.quit();
+
     }
 
     /**
@@ -68,5 +70,7 @@ public class Runner extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterExecution() {
         ReportGenerator.generateReport();
+
     }
+
 }

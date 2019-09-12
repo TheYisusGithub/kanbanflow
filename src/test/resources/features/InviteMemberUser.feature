@@ -7,7 +7,7 @@ Feature: Creation funtional and acceptance
   Then The user clicking should show the 30testemail@gmail.com with the pending invitations
 
 
-#  @Negative @DeleteInvitation
-#  Scenario: The user sent and invitations but user exist
-#  Given The user adds a new member with this email 21testemailexits@gmail.com
-#  Then The page show message, the email 21testemailexits@gmail.com exist
+  @Negative @DeleteInvitation
+  Scenario: The user sent and invitations but user exist
+  Given The user adds a new member with this email 21testemailexits@gmail.com
+  Then The page show message, the email 21testemailexits@gmail.com exist

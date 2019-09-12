@@ -12,7 +12,10 @@
 
 package core.selenium;
 
+import core.util.Log;
+
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -43,7 +46,8 @@ public class WebDriverConfig {
             implicit = properties.getProperty("implicit");
             explicit = properties.getProperty("explicit");
         } catch (Exception ex) {
-            ex.printStackTrace();
+            Log.getInstance().getLog().error(ex);
+            throw new NullPointerException("File not found" + ex);
         }
     }
 
