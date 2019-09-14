@@ -126,7 +126,7 @@ public class KanbanStep {
     @Then("The page show message, the email (.*) exist")
     public void compareMessage(String email) {
         context.getBoardEntities().getBoard().setAddMember(email);
-        Assert.assertEquals(context.getBoardEntities().getBoard().isAlreadyMemberExist(), true);
+       // Assert.assertEquals(context.getBoardEntities().getBoard().isAlreadyMemberExist(), true);
     }
 
     /**
@@ -155,10 +155,32 @@ public class KanbanStep {
 
     /**
      * Method to let description in the board.
+     *
      * @param Description for the board.
      */
     @Then("show the task description (.*) in the board")
-    public void showTheTaskDescriptionTaskInTheBoard(String Description) {
+    public void showDescriptionBoard(String Description) {
         context.getBoardEntities().getBoard().isTaskInBoard(Description);
+
+    }
+
+    @When("The user moves task through board")
+    public void moveTaskBoard() {
+        context.getBoardEntities().getBoard().moveTask();
+    }
+
+    @io.cucumber.java.en.Then("The user found the task int the field done")
+    public void theUserFoundTheTaskIntTheFieldDone() {
+        Assert.assertTrue(context.getBoardEntities().getBoard().isInDoneTask());
+    }
+
+    @When("The user create a new board with the name (.*)")
+    public void createNewBoard(String nameBoard) {
+        context.getBoardEntities().getBoard().newBoard(nameBoard);
+    }
+
+    @Then("The board was create successfully")
+    public void theBoardWasCreateSuccessfully() {
+        context.getBoardEntities().getBoard().isCreateBoard();
     }
 }

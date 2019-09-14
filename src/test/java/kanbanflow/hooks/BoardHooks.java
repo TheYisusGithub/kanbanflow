@@ -52,7 +52,6 @@ public class BoardHooks {
     @After("@DeleteTask")
     public void Deletetask() {
         context.getBoardEntities().getBoard().Deletetask();
-
     }
 
     /**

@@ -12,10 +12,12 @@
 
 package kanbanflow.ui.pages;
 
+import core.selenium.WebDriverManager;
 import kanbanflow.ui.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 /**
@@ -212,4 +214,109 @@ public class Board extends BasePage {
     public boolean isAlreadyMemberExist() {
         return messageIfexist.getText().equals(" is already a member of the board");
     }
+
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td/div/div[2]/div/span")
+    private WebElement taskCath;
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[2]/div/div[2]")
+    private WebElement taskDropToday;
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[3]/div/div[2]")
+    private WebElement taskDropInProgress;
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[4]/div/div[2]")
+    private WebElement taskDropDone;
+
+    /**
+     * Let move a task to different fields in the board.
+     */
+    public void moveTask() {
+        Actions builder = new Actions(WebDriverManager.getInstance().getDriver());
+        builder.dragAndDrop(taskCath, taskDropToday).perform();
+        builder.dragAndDrop(taskCath, taskDropInProgress).perform();
+        builder.dragAndDrop(taskCath, taskDropDone).perform();
+        builder.build();
+    }
+
+    /**
+     * Compare if exist a element in the field done.
+     *
+     * @return boolean value.
+     */
+    public boolean isInDoneTask() {
+        return taskDropDone.isDisplayed();
+    }
+
+    @FindBy(xpath = "//div[@id='header']/div/button/i")
+    private WebElement buttonBoardMenu;
+    @FindBy(xpath = "//a[contains(text(),'Create board')]")
+    private WebElement createBoardButton;
+    @FindBy(xpath = "//input[@id='createBoard-boardName']")
+    private WebElement boardName;
+    @FindBy(xpath = "//button[contains(.,'Next')]")
+    private WebElement buttonNext;
+    @FindBy(xpath = "//button[contains(.,'Create board')]")
+    private WebElement buttonCreateBoard;
+
+    /**
+     * Method let create a new board.
+     */
+    public void newBoard(String nameBoard) {
+        buttonBoardMenu.click();
+        createBoardButton.click();
+        boardName.sendKeys("nameBoard");
+        buttonNext.click();
+        buttonNext.click();
+        buttonNext.click();
+        buttonCreateBoard.click();
+    }
+
+    /**
+     * Let create a board.
+     */
+    @FindBy(xpath = "//body[contains(@class,'body-board body-board--loaded')]")
+    private WebElement stateNameBoard;
+
+    public boolean isCreateBoard() {
+        return stateNameBoard.isDisplayed();
+    }
+
+
+//    @FindBy(xpath = "//div[@id='header']/div/button/i")
+//    private WebElement buttonBoardMenu;
+//    @FindBy(xpath = "//a[contains(text(),'Create board')]")
+//    private WebElement createBoardButton;
+//    @FindBy(xpath = "//input[@id='createBoard-boardName']")
+//    private WebElement boardName;
+//    @FindBy(xpath = "//button[contains(.,'Next')]")
+//    private WebElement buttonNext;
+//    @FindBy(xpath = "//button[contains(.,'Create board')]")
+//    private WebElement buttonCreateBoard;
+
+    /**
+     * Method let create a new board.
+     */
+    public void newBoardWithLimitWorks(String nameBoard) {
+        buttonBoardMenu.click();
+        createBoardButton.click();
+        boardName.sendKeys("nameBoard");
+        buttonNext.click();
+        buttonNext.click();
+//        buttonNext.click();
+//        buttonCreateBoard.click();
+    }
+
+
+
+    @FindBy(xpath = "//button[contains(.,'Create board')]")
+    private WebElement buttonCreateBoard;
+
+    public void fillFieldBoardLimitWorks() {
+        buttonBoardMenu.click();
+        createBoardButton.click();
+        boardName.sendKeys("nameBoard");
+        buttonNext.click();
+        buttonNext.click();
+//        buttonNext.click();
+//        buttonCreateBoard.click();
+    }
+
+
 }

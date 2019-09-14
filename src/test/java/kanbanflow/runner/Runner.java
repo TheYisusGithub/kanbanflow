@@ -43,14 +43,7 @@ import java.io.File;
         features = {"src/test/resources/features"},
         monochrome = true)
 public class Runner extends AbstractTestNGCucumberTests {
-    /**
-     * The method that let me quit.
-     */
-    @AfterMethod
-    public void quitAfterMethod() {
-        WebDriver driver = WebDriverManager.getInstance().getDriver();
-        driver.quit();
-    }
+
 
     /**
      * The method afterExecution executes the project and generate it report.
