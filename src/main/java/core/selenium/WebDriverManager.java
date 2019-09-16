@@ -49,10 +49,10 @@ public final class WebDriverManager {
         String webBrowser = WebDriverConfig.getInstance().getWebBrowser().toUpperCase();
         BrowserType browserType = BrowserType.valueOf(webBrowser);
         driver = BrowserFactory.getBrowser(browserType).getDriver();
-        timeOutInSeconds = Integer.parseInt(WebDriverConfig.getInstance().getExplicit());
+        timeOutInSeconds = Integer.parseInt(WebDriverConfig.getInstance().getExplicitWait());
         wait = new WebDriverWait(driver, timeOutInSeconds);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(WebDriverConfig.
-                getInstance().getImplicit()), TimeUnit.SECONDS);
+                getInstance().getImplicitWait()), TimeUnit.SECONDS);
     }
 
     /**

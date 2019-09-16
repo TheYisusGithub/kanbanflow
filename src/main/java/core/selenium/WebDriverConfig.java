@@ -26,8 +26,8 @@ import java.util.Properties;
  */
 public final class WebDriverConfig {
     private String webBrowser;
-    private String implicit;
-    private String explicit;
+    private String implicitWait;
+    private String explicitWait;
     private static WebDriverConfig ourInstance = new WebDriverConfig();
 
     /**
@@ -46,8 +46,8 @@ public final class WebDriverConfig {
             Properties properties = new Properties();
             properties.load(input);
             webBrowser = properties.getProperty("browser");
-            implicit = properties.getProperty("implicit");
-            explicit = properties.getProperty("explicit");
+            implicitWait = properties.getProperty("implicit");
+            explicitWait = properties.getProperty("explicit");
         } catch (Exception ex) {
             Log.getInstance().getLog().error(ex);
             throw new NullPointerException("File not found" + ex);
@@ -68,8 +68,8 @@ public final class WebDriverConfig {
      *
      * @return implicit.
      */
-    public String getImplicit() {
-        return implicit;
+    public String getImplicitWait() {
+        return implicitWait;
     }
 
     /**
@@ -77,7 +77,7 @@ public final class WebDriverConfig {
      *
      * @return explicit.
      */
-    public String getExplicit() {
-        return explicit;
+    public String getExplicitWait() {
+        return explicitWait;
     }
 }

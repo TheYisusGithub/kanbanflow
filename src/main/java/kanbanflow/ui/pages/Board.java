@@ -20,6 +20,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Map;
+
 /**
  * Class let drive the behavior and element the page kanban flow .
  *
@@ -37,17 +39,31 @@ public class Board extends BasePage {
     private WebElement modal;
     @FindBy(className = "addTaskDialog-close")
     private WebElement closeModalButton;
-
+    @FindBy(css = ".addTaskDialog-descriptionButton")
+    private WebElement buttonDescriptionTask;
+    @FindBy(css = ".taskDetails-textEditorInput")
+    private WebElement descriptionBox;
+    @FindBy(css = ".addTaskDialog-iconButton:nth-child(1)")
+    private WebElement buttonMemberAdd;
+    @FindBy(css = ".selectUserDialog-searchInput")
+    private WebElement textInputUserSearch;
+    @FindBy(css = ".selectUserDialog-item-checkboxIcon")
+    private WebElement buttonCheckBoxUserDialog;
     /**
      * Method to let a send a description to the task.
      *
-     * @param description this is the descriptions to the task.
+     * @param inputContent this is the descriptions to the task.
      */
-    public void setAddNewToDo(String description) {
+    public void setAddNewToDo(Map<String, String> inputContent) {
         addTaskButton.click();
-        addTaskName.sendKeys(description);
+        addTaskName.sendKeys(inputContent.get("Name"));
+        buttonDescriptionTask.click();
+        descriptionBox.sendKeys(inputContent.get("Description"));
+        buttonMemberAdd.click();
+        textInputUserSearch.sendKeys(inputContent.get("Subject"));
+        buttonCheckBoxUserDialog.click();
         driver.findElement(By.xpath("//body")).sendKeys(Keys.chord(Keys.CONTROL, Keys.RETURN));
-
+        driver.findElement(By.xpath("//body")).sendKeys(Keys.chord(Keys.CONTROL, Keys.RETURN));
     }
 
     /**
@@ -261,7 +277,7 @@ public class Board extends BasePage {
     public void newBoard(String nameBoard) {
         buttonBoardMenu.click();
         createBoardButton.click();
-        boardName.sendKeys("nameBoard");
+        boardName.sendKeys(nameBoard);
         buttonNext.click();
         buttonNext.click();
         buttonNext.click();
@@ -305,8 +321,8 @@ public class Board extends BasePage {
 
 
 
-    @FindBy(xpath = "//button[contains(.,'Create board')]")
-    private WebElement buttonCreateBoard;
+    //@FindBy(xpath = "//button[contains(.,'Create board')]")
+    //private WebElement buttonCreateBoard;
 
     public void fillFieldBoardLimitWorks() {
         buttonBoardMenu.click();
