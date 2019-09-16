@@ -12,6 +12,8 @@
 
 package core.selenium;
 
+import core.util.Log;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
@@ -22,12 +24,16 @@ import java.util.Properties;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class WebDriverConfig {
+public final class WebDriverConfig {
     private String webBrowser;
-    private String implicit;
-    private String explicit;
+    private String implicitWait;
+    private String explicitWait;
     private static WebDriverConfig ourInstance = new WebDriverConfig();
 
+    /**
+     * Method let optain a instance.
+     * @return WebDriverConfig instance.
+     */
     public static WebDriverConfig getInstance() {
         return ourInstance;
     }
@@ -40,10 +46,11 @@ public class WebDriverConfig {
             Properties properties = new Properties();
             properties.load(input);
             webBrowser = properties.getProperty("browser");
-            implicit = properties.getProperty("implicit");
-            explicit = properties.getProperty("explicit");
+            implicitWait = properties.getProperty("implicit");
+            explicitWait = properties.getProperty("explicit");
         } catch (Exception ex) {
-            ex.printStackTrace();
+            Log.getInstance().getLog().error(ex);
+            throw new NullPointerException("File not found" + ex);
         }
     }
 
@@ -61,8 +68,8 @@ public class WebDriverConfig {
      *
      * @return implicit.
      */
-    public String getImplicit() {
-        return implicit;
+    public String getImplicitWait() {
+        return implicitWait;
     }
 
     /**
@@ -70,7 +77,7 @@ public class WebDriverConfig {
      *
      * @return explicit.
      */
-    public String getExplicit() {
-        return explicit;
+    public String getExplicitWait() {
+        return explicitWait;
     }
 }

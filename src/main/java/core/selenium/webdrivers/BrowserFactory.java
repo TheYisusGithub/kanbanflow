@@ -29,6 +29,12 @@ public class BrowserFactory {
     }};
 
     /**
+     * Contructor.
+     */
+    public BrowserFactory() {
+    }
+
+    /**
      * Method to let set a type of browser and return his driver.
      *
      * @param type BrowserType.

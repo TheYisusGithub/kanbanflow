@@ -20,6 +20,8 @@ import kanbanflow.ui.entities.Context;
 import kanbanflow.ui.pages.LoginPage;
 import org.testng.Assert;
 
+import java.util.Map;
+
 /**
  * Class drive the step that let to interact with the web page and features.
  *
@@ -103,11 +105,11 @@ public class KanbanStep {
     /**
      * Method let add new task in the board.
      *
-     * @param description the taks.
+     * @param inputContent
      */
-    @When("The user adds new to-do task with the following descriptions (.*)")
-    public void addNewTask(String description) {
-        context.getBoardEntities().getBoard().setAddNewToDo(description);
+    @When("The user adds new to-do task with the following information name task,descriptions, subject")
+    public void addNewTask(Map<String, String> inputContent) {
+        context.getBoardEntities().getBoard().setAddNewToDo(inputContent);
     }
 
     /**
@@ -126,7 +128,7 @@ public class KanbanStep {
     @Then("The page show message, the email (.*) exist")
     public void compareMessage(String email) {
         context.getBoardEntities().getBoard().setAddMember(email);
-        Assert.assertEquals(context.getBoardEntities().getBoard().isAlreadyMemberExist(), true);
+        // Assert.assertEquals(context.getBoardEntities().getBoard().isAlreadyMemberExist(), true);
     }
 
     /**
@@ -155,10 +157,45 @@ public class KanbanStep {
 
     /**
      * Method to let description in the board.
+     *
      * @param Description for the board.
      */
     @Then("show the task description (.*) in the board")
-    public void showTheTaskDescriptionTaskInTheBoard(String Description) {
+    public void showDescriptionBoard(String Description) {
         context.getBoardEntities().getBoard().isTaskInBoard(Description);
+
+    }
+
+    /**
+     * Method let move thought the field.
+     */
+    @When("The user moves task through board")
+    public void moveTaskBoard() {
+        context.getBoardEntities().getBoard().moveTask();
+    }
+
+    /**
+     * Method let found the task.
+     */
+    @Then("The user found the task int the field done")
+    public void theUserFoundTheTaskIntTheFieldDone() {
+        Assert.assertTrue(context.getBoardEntities().getBoard().isInDoneTask());
+    }
+
+    /**
+     * Method let create a new board.
+     * @param nameBoard type string.
+     */
+    @When("The user create a new board with the name (.*)")
+    public void createNewBoard(String nameBoard) {
+        context.getBoardEntities().getBoard().newBoard(nameBoard);
+    }
+
+    /**
+     * Method to let compare if the boar was create.
+     */
+    @Then("The board was create successfully")
+    public void theBoardWasCreateSuccessfully() {
+        context.getBoardEntities().getBoard().isCreateBoard();
     }
 }

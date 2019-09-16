@@ -65,4 +65,11 @@ public class BoardHooks {
             scenario.embed(screenshot, "image/png"); // ... and embed it in the report.
         }
     }
+    /**
+     * Method to let logout.
+     */
+    @After("@logout")
+    public void logout() {
+        context.getBoardEntities().getBoard().goOutPage();
+    }
 }
