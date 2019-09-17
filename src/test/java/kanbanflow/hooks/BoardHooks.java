@@ -27,10 +27,11 @@ import org.openqa.selenium.WebDriver;
  */
 public class BoardHooks {
     private Context context;
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
     /**
      * Constructor.
+     *
      * @param context class.
      */
     public BoardHooks(Context context) {
@@ -42,7 +43,7 @@ public class BoardHooks {
      * Method delete the invitations.
      */
     @After("@DeleteInvitation")
-    public void DeleteContact() {
+    public void deleteContact() {
         context.getBoardEntities().getBoard().removeInvitationMember();
     }
 
@@ -50,12 +51,13 @@ public class BoardHooks {
      * Method to let delete task.
      */
     @After("@DeleteTask")
-    public void Deletetask() {
-        context.getBoardEntities().getBoard().Deletetask();
+    public void deletetask() {
+        context.getBoardEntities().getBoard().deletetask();
     }
 
     /**
-     * Methot to let me create a screen shot to web browser
+     * Method to let me create a screen shot to web browser.
+     *
      * @param scenario failure.
      */
     @After
@@ -65,6 +67,7 @@ public class BoardHooks {
             scenario.embed(screenshot, "image/png"); // ... and embed it in the report.
         }
     }
+
     /**
      * Method to let logout.
      */

@@ -22,7 +22,7 @@ import java.util.Properties;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class ReadProperties {
+public final class ReadProperties {
 
     private String userName;
     private String password;

@@ -46,6 +46,11 @@ public class LoginPage extends BasePage {
         inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
         submitButton.click();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -49,6 +49,63 @@ public class Board extends BasePage {
     private WebElement textInputUserSearch;
     @FindBy(css = ".selectUserDialog-item-checkboxIcon")
     private WebElement buttonCheckBoxUserDialog;
+    @FindBy(className = "headerMembers-add")
+    private WebElement addMember;
+    @FindBy(className = "chipsInput-input")
+    private WebElement addEmail;
+    @FindBy(xpath = "//button[contains(@class, 'inviteBoardMemberDialog-invite button button--success')]")
+    private WebElement sendInvite;
+    @FindBy(xpath = "//div[contains(@class, 'modalBox-body scroll scroll--rounded')]")
+    private WebElement catchMessage;
+    @FindBy(xpath = "//button[contains(@title, 'All members')]")
+    private WebElement allMember;
+    @FindBy(xpath = "//input[contains(@class, 'boardMembersDialog-searchInput')]")
+    private WebElement searchMemberInvite;
+    @FindBy(xpath = "//div[contains(@class, 'boardMembersDialog-memberName truncate')]")
+    private WebElement memberFound;
+    @FindBy(xpath = "//div[contains(@class, 'profileDialog-isPendingMember')]")
+    private WebElement pendingInvitation;
+    @FindBy(xpath = "//button[contains(@class, 'profileDialog-removeFromBoard profileDialog-action button')]")
+    private WebElement memberDelete;
+    @FindBy(xpath = "//button[contains(@class, 'modalBox-button button button--danger')]")
+    private WebElement buttonMemberDelete;
+    @FindBy(xpath = "//img[contains(@id, 'menuLinks-avatar')]")
+    private WebElement settingMenu;
+    @FindBy(xpath = "//a[contains(@class, 'menuLinks-logout userMenu-item userMenu-link')]")
+    private WebElement logOutButton;
+    @FindBy(xpath = "//button[contains(@class, 'addTaskDialog-close')]")
+    private WebElement taskModalCloseButton;
+    @FindBy(xpath = "//span[contains(@class,'task-name')]")
+    private WebElement isInBoard;
+    @FindBy(xpath = "//div[contains(@class,'task task-yellow')]")
+    private WebElement taskInBoard;
+    @FindBy(xpath = "//button[contains(@class,'taskDetails-sidebar-deleteButton taskDetails-sidebarButton')]")
+    private WebElement trashTask;
+    @FindBy(xpath = "//button[contains(@class,'modalBox-button button button--danger')]")
+    private WebElement buttonOkTrash;
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td/div/div[2]/div/span")
+    private WebElement taskCath;
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[2]/div/div[2]")
+    private WebElement taskDropToday;
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[3]/div/div[2]")
+    private WebElement taskDropInProgress;
+    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[4]/div/div[2]")
+    private WebElement taskDropDone;
+    @FindBy(xpath = "//div[@id='header']/div/button/i")
+    private WebElement buttonBoardMenu;
+    @FindBy(xpath = "//a[contains(text(),'Create board')]")
+    private WebElement createBoardButton;
+    @FindBy(xpath = "//input[@id='createBoard-boardName']")
+    private WebElement boardName;
+    @FindBy(xpath = "//button[contains(.,'Next')]")
+    private WebElement buttonNext;
+    @FindBy(xpath = "//button[contains(.,'Create board')]")
+    private WebElement buttonCreateBoard;
+    @FindBy(xpath = "//body[contains(@class,'body-board body-board--loaded')]")
+    private WebElement stateNameBoard;
+    @FindBy(xpath = "//div[contains(@class, 'modalBox-body scroll scroll--rounded')]")
+    private WebElement messageIfexist;
+
     /**
      * Method to let a send a description to the task.
      *
@@ -74,15 +131,6 @@ public class Board extends BasePage {
     public boolean isBoardPage() {
         return driver.getCurrentUrl().contains("board");
     }
-
-    @FindBy(className = "headerMembers-add")
-    private WebElement addMember;
-    @FindBy(className = "chipsInput-input")
-    private WebElement addEmail;
-    @FindBy(xpath = "//button[contains(@class, 'inviteBoardMemberDialog-invite button button--success')]")
-    private WebElement sendInvite;
-    @FindBy(xpath = "//div[contains(@class, 'modalBox-body scroll scroll--rounded')]")
-    private WebElement catchMessage;
 
     /**
      * Method to let set a email method.
@@ -123,18 +171,6 @@ public class Board extends BasePage {
         return (email + " is already a member of the board").equals(catchMessage.getText());
     }
 
-    @FindBy(xpath = "//button[contains(@title, 'All members')]")
-    private WebElement allMember;
-
-    @FindBy(xpath = "//input[contains(@class, 'boardMembersDialog-searchInput')]")
-    private WebElement searchMemberInvite;
-
-    @FindBy(xpath = "//div[contains(@class, 'boardMembersDialog-memberName truncate')]")
-    private WebElement memberFound;
-
-    @FindBy(xpath = "//div[contains(@class, 'profileDialog-isPendingMember')]")
-    private WebElement pendingInvitation;
-
     /**
      * Method find member user.
      *
@@ -157,25 +193,12 @@ public class Board extends BasePage {
     }
 
     /**
-     * Method remove invitations.
-     */
-    @FindBy(xpath = "//button[contains(@class, 'profileDialog-removeFromBoard profileDialog-action button')]")
-    private WebElement memberDelete;
-    @FindBy(xpath = "//button[contains(@class, 'modalBox-button button button--danger')]")
-    private WebElement buttonMemberDelete;
-
-    /**
      * Method remove the invitation of a member.
      */
     public void removeInvitationMember() {
         memberDelete.click();
         buttonMemberDelete.click();
     }
-
-    @FindBy(xpath = "//img[contains(@id, 'menuLinks-avatar')]")
-    private WebElement settingMenu;
-    @FindBy(xpath = "//a[contains(@class, 'menuLinks-logout userMenu-item userMenu-link')]")
-    private WebElement logOutButton;
 
     /**
      * Method go out of login page kanban.
@@ -185,9 +208,6 @@ public class Board extends BasePage {
         logOutButton.click();
     }
 
-    @FindBy(xpath = "//button[contains(@class, 'addTaskDialog-close')]")
-    private WebElement taskModalCloseButton;
-
     /**
      * Method close modal windows.
      */
@@ -195,50 +215,33 @@ public class Board extends BasePage {
         taskModalCloseButton.click();
     }
 
-    @FindBy(xpath = "//span[contains(@class,'task-name')]")
-    private WebElement isInBoard;
-
     /**
-     * Method compare is task are in the boar.
+     * Method compare if the description found in the board.
+     *
+     * @param description parameter.
+     * @return boolean value.
      */
-    public boolean isTaskInBoard(String Description) {
-        return isInBoard.getText().equals(Description);
+    public boolean isTaskInBoard(String description) {
+        return isInBoard.getText().equals(description);
     }
-
-    @FindBy(xpath = "//div[contains(@class,'task task-yellow')]")
-    private WebElement taskInBoard;
-    @FindBy(xpath = "//button[contains(@class,'taskDetails-sidebar-deleteButton taskDetails-sidebarButton')]")
-    private WebElement trashTask;
-    @FindBy(xpath = "//button[contains(@class,'modalBox-button button button--danger')]")
-    private WebElement buttonOkTrash;
 
     /**
      * Method delete task that was create.
      */
-    public void Deletetask() {
+    public void deletetask() {
         taskInBoard.click();
         trashTask.click();
         buttonOkTrash.click();
     }
 
-    @FindBy(xpath = "//div[contains(@class, 'modalBox-body scroll scroll--rounded')]")
-    private WebElement messageIfexist;
-
     /**
      * Method compare if member is already.
+     *
+     * @return boolean value.
      */
     public boolean isAlreadyMemberExist() {
         return messageIfexist.getText().equals(" is already a member of the board");
     }
-
-    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td/div/div[2]/div/span")
-    private WebElement taskCath;
-    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[2]/div/div[2]")
-    private WebElement taskDropToday;
-    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[3]/div/div[2]")
-    private WebElement taskDropInProgress;
-    @FindBy(xpath = "//table[@id='board-table']/tbody/tr/td[4]/div/div[2]")
-    private WebElement taskDropDone;
 
     /**
      * Let move a task to different fields in the board.
@@ -260,19 +263,10 @@ public class Board extends BasePage {
         return taskDropDone.isDisplayed();
     }
 
-    @FindBy(xpath = "//div[@id='header']/div/button/i")
-    private WebElement buttonBoardMenu;
-    @FindBy(xpath = "//a[contains(text(),'Create board')]")
-    private WebElement createBoardButton;
-    @FindBy(xpath = "//input[@id='createBoard-boardName']")
-    private WebElement boardName;
-    @FindBy(xpath = "//button[contains(.,'Next')]")
-    private WebElement buttonNext;
-    @FindBy(xpath = "//button[contains(.,'Create board')]")
-    private WebElement buttonCreateBoard;
-
     /**
      * Method let create a new board.
+     *
+     * @param nameBoard type string.
      */
     public void newBoard(String nameBoard) {
         buttonBoardMenu.click();
@@ -285,29 +279,17 @@ public class Board extends BasePage {
     }
 
     /**
-     * Let create a board.
+     * Method let verify if name is create in the board.
+     * @return boolean value.
      */
-    @FindBy(xpath = "//body[contains(@class,'body-board body-board--loaded')]")
-    private WebElement stateNameBoard;
-
     public boolean isCreateBoard() {
         return stateNameBoard.isDisplayed();
     }
 
-
-//    @FindBy(xpath = "//div[@id='header']/div/button/i")
-//    private WebElement buttonBoardMenu;
-//    @FindBy(xpath = "//a[contains(text(),'Create board')]")
-//    private WebElement createBoardButton;
-//    @FindBy(xpath = "//input[@id='createBoard-boardName']")
-//    private WebElement boardName;
-//    @FindBy(xpath = "//button[contains(.,'Next')]")
-//    private WebElement buttonNext;
-//    @FindBy(xpath = "//button[contains(.,'Create board')]")
-//    private WebElement buttonCreateBoard;
-
     /**
-     * Method let create a new board.
+     * Method let create a new board with the name.
+     *
+     * @param nameBoard type string.
      */
     public void newBoardWithLimitWorks(String nameBoard) {
         buttonBoardMenu.click();
@@ -315,24 +297,16 @@ public class Board extends BasePage {
         boardName.sendKeys("nameBoard");
         buttonNext.click();
         buttonNext.click();
-//        buttonNext.click();
-//        buttonCreateBoard.click();
     }
 
-
-
-    //@FindBy(xpath = "//button[contains(.,'Create board')]")
-    //private WebElement buttonCreateBoard;
-
+    /**
+     * Method let create a new board with LimitWorks.
+     */
     public void fillFieldBoardLimitWorks() {
         buttonBoardMenu.click();
         createBoardButton.click();
         boardName.sendKeys("nameBoard");
         buttonNext.click();
         buttonNext.click();
-//        buttonNext.click();
-//        buttonCreateBoard.click();
     }
-
-
 }

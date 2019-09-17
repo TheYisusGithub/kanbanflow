@@ -21,8 +21,8 @@ import kanbanflow.ui.pages.PageTransporter;
  * @version 1.0
  */
 public class BoardEntities {
-    PageTransporter pageTransporter = new PageTransporter();
-    Board board = new Board();
+    private PageTransporter pageTransporter = new PageTransporter();
+    private Board board = new Board();
 
     /**
      * Return the page transporte..
@@ -33,8 +33,8 @@ public class BoardEntities {
     }
 
     /**
-     * Return the board
-     * @return board.
+     * Return the board class type.
+     * @return board is a class.
      */
     public Board getBoard() {
         return board;

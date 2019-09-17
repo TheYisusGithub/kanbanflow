@@ -15,18 +15,7 @@ package kanbanflow.runner;
 import core.selenium.WebDriverManager;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import kanbanflow.steps.KanbanStep;
-import kanbanflow.ui.entities.Context;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-
-import java.io.File;
 
 /**
  * Class let me generate the report cucumber.
@@ -43,7 +32,6 @@ import java.io.File;
         features = {"src/test/resources/features"},
         monochrome = true)
 public class Runner extends AbstractTestNGCucumberTests {
-
 
     /**
      * The method afterExecution executes the project and generate it report.
