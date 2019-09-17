@@ -26,7 +26,13 @@ import java.util.List;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class ReportGenerator {
+public final class ReportGenerator {
+
+    /**
+     * Constructor.
+     */
+    private ReportGenerator() {
+    }
 
     /**
      * The method generateReport is to set up and create a report.

@@ -30,7 +30,7 @@ import java.util.Map;
  */
 public class KanbanStep {
     private Context context;
-    LoginPage loginPage;
+    private LoginPage loginPage;
 
 
     /**
@@ -77,17 +77,18 @@ public class KanbanStep {
      * Method to let logs int the page kanban flow.
      */
     @Given("The user logs in to the kanbanflow page")
-    public void LogsInToThePage() {
+    public void logsintothepage() {
         loginPage = context.getBoardEntities().getPageTransporter().goToLoginPage();
         loginPage.signIn(ReadProperties.getInstance().getUserName(), ReadProperties.getInstance().getPassword());
-
     }
 
     /**
      * Method to let send a invitations members.
+     *
+     * @param email type string.
      */
     @When("The user adds a new member with this email (.*)")
-    public void AddsNewMember(String email) {
+    public void addsNewMember(String email) {
         context.getBoardEntities().getBoard().setAddMember(email);
     }
 
@@ -105,7 +106,7 @@ public class KanbanStep {
     /**
      * Method let add new task in the board.
      *
-     * @param inputContent
+     * @param inputContent type map.
      */
     @When("The user adds new to-do task with the following information name task,descriptions, subject")
     public void addNewTask(Map<String, String> inputContent) {
@@ -121,21 +122,20 @@ public class KanbanStep {
     }
 
     /**
-     * Find the email if exist.
+     * Method find the email if exist.
      *
-     * @param email
+     * @param email type string.
      */
     @Then("The page show message, the email (.*) exist")
     public void compareMessage(String email) {
         context.getBoardEntities().getBoard().setAddMember(email);
-        // Assert.assertEquals(context.getBoardEntities().getBoard().isAlreadyMemberExist(), true);
     }
 
     /**
      * Method verify if the logs to kanban was successfully.
      */
     @Then("The access is successfuly")
-    public void IsSuccessfuly() {
+    public void isSuccessfuly() {
         Assert.assertEquals(context.getBoardEntities().getBoard().isBoardPage(), true);
     }
 
@@ -158,12 +158,11 @@ public class KanbanStep {
     /**
      * Method to let description in the board.
      *
-     * @param Description for the board.
+     * @param description for the board.
      */
     @Then("show the task description (.*) in the board")
-    public void showDescriptionBoard(String Description) {
-        context.getBoardEntities().getBoard().isTaskInBoard(Description);
-
+    public void showDescriptionBoard(String description) {
+        context.getBoardEntities().getBoard().isTaskInBoard(description);
     }
 
     /**

@@ -22,7 +22,7 @@ import java.util.Map;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class BrowserFactory {
+public final class BrowserFactory {
     private static Map<BrowserType, Browser> map = new HashMap<BrowserType, Browser>() {{
         put(BrowserType.CHROME, new Chrome());
         put(BrowserType.FIREFOX, new FireFox());
@@ -31,7 +31,7 @@ public class BrowserFactory {
     /**
      * Contructor.
      */
-    public BrowserFactory() {
+    private BrowserFactory() {
     }
 
     /**
